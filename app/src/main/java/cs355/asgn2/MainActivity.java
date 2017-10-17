@@ -12,39 +12,32 @@ import android.content.Intent;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.icu.text.DateFormat;
-import android.app.Activity;
-import android.os.Bundle;
-import java.util.ArrayList;
-
-import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
-    DateFormat fmtDateAndTime = DateFormat.getDateTimeInstance();
     Calendar myCalendar = Calendar.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter =
+                ArrayAdapter. createFromResource (MainActivity.this,
+                        R.array.gender_array , android.R.layout. simple_spinner_item );
+        adapter.setDropDownViewResource(android.R.layout. simple_spinner_dropdown_item );
+        spinner.setAdapter(adapter);
         Button button = (Button) findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,
-                        MainActivity2.class);
-                Spinner spinner = (Spinner)findViewById(R.id.spinner);
-                ArrayAdapter<CharSequence> adapter =
-                        ArrayAdapter. createFromResource (MainActivity.this,
-                        R.array.gender_array , android.R.layout. simple_spinner_item );
-                adapter.setDropDownViewResource(android.R.layout. simple_spinner_dropdown_item );
-                spinner.setAdapter(adapter);
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                 EditText edt1 = (EditText)findViewById(R.id.editText1);
                 EditText edt2 = (EditText)findViewById(R.id.editText2);
                 EditText edt3 = (EditText)findViewById(R.id.editText3);
                 EditText edt4 = (EditText)findViewById(R.id.editText4);
                 EditText edt5 = (EditText)findViewById(R.id.editText5);
-                String value1 = edt1.getText().toString();
+                Spinner spinner = (Spinner)findViewById(R.id.spinner);
+                String spnText = spinner.getSelectedItem().toString();
+                String value1 = spnText+" "+edt1.getText().toString();
                 String value2 = edt2.getText().toString();
                 String value3 = edt3.getText().toString();
                 String value4 = edt4.getText().toString();
@@ -57,13 +50,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> adapter =
-                ArrayAdapter.createFromResource(this,
-                        R.array.gender_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
 
         Button btnDate = (Button) findViewById(R.id.btnChangeDate);
         btnDate.setOnClickListener(new View.OnClickListener() {

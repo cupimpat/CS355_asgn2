@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">CS355_asgn2</string>
-    <string name="txt0">Assignment1</string>
+    <string name="txt0">Assignment2</string>
     <string name="txt1">Name</string>
     <string name="txt2">Lastname</string>
     <string name="txt3">Date of Birth</string>
     <string name="txt4">e-mail</string>
     <string name="txt5">PhoneNo.</string>
+    <string name="txt6">Age</string>
     <string name="btn1">Submit</string>
 
     <string name="change_date">set</string>
