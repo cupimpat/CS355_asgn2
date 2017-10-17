@@ -34,12 +34,17 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this,
                         MainActivity2.class);
                 Spinner spinner = (Spinner)findViewById(R.id.spinner);
+                ArrayAdapter<CharSequence> adapter =
+                        ArrayAdapter. createFromResource (MainActivity.this,
+                        R.array.gender_array , android.R.layout. simple_spinner_item );
+                adapter.setDropDownViewResource(android.R.layout. simple_spinner_dropdown_item );
+                spinner.setAdapter(adapter);
                 EditText edt1 = (EditText)findViewById(R.id.editText1);
                 EditText edt2 = (EditText)findViewById(R.id.editText2);
                 EditText edt3 = (EditText)findViewById(R.id.editText3);
                 EditText edt4 = (EditText)findViewById(R.id.editText4);
                 EditText edt5 = (EditText)findViewById(R.id.editText5);
-                String value1 = spinner.getSlectedItem().toString()+""+edt1.getText().toString();
+                String value1 = edt1.getText().toString();
                 String value2 = edt2.getText().toString();
                 String value3 = edt3.getText().toString();
                 String value4 = edt4.getText().toString();
