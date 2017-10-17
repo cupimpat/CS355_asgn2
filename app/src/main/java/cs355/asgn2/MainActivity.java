@@ -1,6 +1,7 @@
 package cs355.asgn2;
 
 import android.app.DatePickerDialog;
+import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,12 +33,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,
                         MainActivity2.class);
+                Spinner spinner = (Spinner)findViewById(R.id.spinner);
                 EditText edt1 = (EditText)findViewById(R.id.editText1);
                 EditText edt2 = (EditText)findViewById(R.id.editText2);
                 EditText edt3 = (EditText)findViewById(R.id.editText3);
                 EditText edt4 = (EditText)findViewById(R.id.editText4);
                 EditText edt5 = (EditText)findViewById(R.id.editText5);
-                String value1 = edt1.getText().toString();
+                String value1 = spinner.getSlectedItem().toString()+""+edt1.getText().toString();
                 String value2 = edt2.getText().toString();
                 String value3 = edt3.getText().toString();
                 String value4 = edt4.getText().toString();
@@ -80,7 +82,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateLabel() {
         EditText txt =(EditText) findViewById(R.id.editText3);
-        txt.setText(fmtDateAndTime.format(myCalendar.getTime()));
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        txt.setText(sdf.format(myCalendar.getTime()));
     }
 
 }
