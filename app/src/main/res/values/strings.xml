@@ -17,4 +17,7 @@
         <item>Mrs.</item>
     </string-array>
 
+    <string name="rbt1">File</string>
+    <string name="rbt2">Pref.Obj.</string>
+
 </resources>
