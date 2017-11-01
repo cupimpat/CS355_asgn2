@@ -77,7 +77,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:lines="1" />
             </LinearLayout>
         </LinearLayout>
 
@@ -111,7 +112,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:lines="1" />
             </LinearLayout>
         </LinearLayout>
 
@@ -149,7 +151,8 @@
                     android:layout_width="189dp"
                     android:layout_height="match_parent"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:lines="1" />
 
             </LinearLayout>
 
@@ -198,7 +201,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:lines="1" />
             </LinearLayout>
         </LinearLayout>
 
@@ -234,7 +238,8 @@
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:inputType="phone"
-                    android:maxLength="10" />
+                    android:maxLength="10"
+                    android:lines="1" />
 
             </LinearLayout>
         </LinearLayout>
@@ -267,7 +272,7 @@
                 android:orientation="vertical">
 
                 <RadioButton
-                    android:id="@+id/radioButton3"
+                    android:id="@+id/radioButton2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"

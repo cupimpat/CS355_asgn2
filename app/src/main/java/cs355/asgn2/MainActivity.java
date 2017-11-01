@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -37,11 +38,36 @@ public class MainActivity extends AppCompatActivity {
                 EditText edt5 = (EditText)findViewById(R.id.editText5);
                 Spinner spinner = (Spinner)findViewById(R.id.spinner);
                 String spnText = spinner.getSelectedItem().toString();
-                String value1 = spnText+" "+edt1.getText().toString();
+                String name = edt1.getText().toString();
+                if (name.matches("")) {
+                    Toast.makeText(getApplicationContext(), "plz enter your firstname", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String value1 = spnText+" "+name;
                 String value2 = edt2.getText().toString();
+                if (value2.matches("")) {
+                    Toast.makeText(getApplicationContext(), "plz enter your lasttname", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 String value3 = edt3.getText().toString();
+                if (value3.matches("")) {
+                    Toast.makeText(getApplicationContext(), "plz enter your date of Birth", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 String value4 = edt4.getText().toString();
+                if (value4.matches("")) {
+                    Toast.makeText(getApplicationContext(), "plz enter your e-mail", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 String value5 = edt5.getText().toString();
+                if (value5.matches("")) {
+                    Toast.makeText(getApplicationContext(), "plz enter your phone number", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (value5.trim().length()<10) {
+                    Toast.makeText(getApplicationContext(), "plz enter your phone number 10 digit", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 intent.putExtra("extra1", value1);
                 intent.putExtra("extra2", value2);
                 intent.putExtra("extra3", value3);
