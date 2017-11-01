@@ -11,7 +11,9 @@ import android.widget.Button;
 import android.content.Intent;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -68,6 +70,18 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "plz enter your phone number 10 digit", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                final RadioButton rbt = (RadioButton) findViewById(R.id.radioButton);
+                final RadioButton rbt2 = (RadioButton) findViewById(R.id.radioButton2);
+                if(rbt.isChecked()){
+
+                }else if(rbt2.isChecked()){
+
+                }else {
+                    Toast.makeText(getApplicationContext(), "plz select RadioButton", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 intent.putExtra("extra1", value1);
                 intent.putExtra("extra2", value2);
                 intent.putExtra("extra3", value3);
@@ -102,5 +116,6 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         txt.setText(sdf.format(myCalendar.getTime()));
     }
+
 
 }
