@@ -25,12 +25,7 @@ public class MainActivity2 extends AppCompatActivity {
         int age = getAge(extra3);
         if(age==0){
             int m_age = getMonth(extra3);
-            if(m_age<=1){
-                int d_age = getDay(extra3);
-                if(m_age==1&&d_age>0) txt3.setText(Integer.toString(m_age) + "  month");
-                else txt3.setText(Integer.toString(d_age) + " day");
-            }
-            else txt3.setText(Integer.toString(m_age) + " month");
+            txt3.setText(Integer.toString(m_age) + " month");
         }
         else txt3.setText(Integer.toString(age) + " years");
         TextView txt4 = (TextView) findViewById(R.id.textView9);
@@ -71,18 +66,6 @@ public class MainActivity2 extends AppCompatActivity {
         String[] nowSplit = nowDate.split("/");
         int nowmonth = Integer.parseInt(nowSplit[1]);
         int age = nowmonth-month;
-        return age;
-    }
-
-    private int getDay(String s){
-        String[] split = s.split("/");
-        int day = Integer.parseInt(split[0]);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = new Date();
-        String nowDate = sdf.format(date);
-        String[] nowSplit = nowDate.split("/");
-        int nowday = Integer.parseInt(nowSplit[0]);
-        int age = nowday-day;
         return age;
     }
 }
