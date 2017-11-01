@@ -25,9 +25,10 @@ public class MainActivity2 extends AppCompatActivity {
         int age = getAge(extra3);
         if(age==0){
             int m_age = getMonth(extra3);
-            if(m_age==0){
+            if(m_age<=1){
                 int d_age = getDay(extra3);
-                txt3.setText(Integer.toString(d_age) + " day");
+                if(m_age==1&&d_age>0) txt3.setText(Integer.toString(m_age) + "  month");
+                else txt3.setText(Integer.toString(d_age) + " day");
             }
             else txt3.setText(Integer.toString(m_age) + " month");
         }

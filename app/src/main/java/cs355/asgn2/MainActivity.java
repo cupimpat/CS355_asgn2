@@ -5,6 +5,7 @@ import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,6 +17,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 import java.util.Date;
 
 
@@ -67,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "plz enter your e-mail", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (!validEmail(value4)){
+                    Toast.makeText(getApplicationContext(), "invalid e-mail", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 String value5 = edt5.getText().toString();
                 if (value5.matches("")) {
                     Toast.makeText(getApplicationContext(), "plz enter your phone number", Toast.LENGTH_SHORT).show();
@@ -80,19 +88,40 @@ public class MainActivity extends AppCompatActivity {
                 final RadioButton rbt = (RadioButton) findViewById(R.id.radioButton);
                 final RadioButton rbt2 = (RadioButton) findViewById(R.id.radioButton2);
                 if(rbt.isChecked()){
+                    String filename = "cs355.txt";
+                    String string = value1 + "\n" + value2 + "\n" + value3 + "\n" + value4 + "\n" + value5;
+                    FileOutputStream outputStream;
+                    try {
+                        outputStream = openFileOutput(filename, MODE_PRIVATE);
+                        outputStream.write(string.getBytes());
+                        outputStream.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
+
+                    String inputString;
+                    try {
+                        BufferedReader inputReader = new BufferedReader(new InputStreamReader(openFileInput(filename)));
+                        StringBuffer stringBuffer = new StringBuffer();
+                        intent.putExtra("extra1", inputReader.readLine());
+                        intent.putExtra("extra2", inputReader.readLine());
+                        intent.putExtra("extra3", inputReader.readLine());
+                        intent.putExtra("extra4", inputReader.readLine());
+                        intent.putExtra("extra5", inputReader.readLine());
+                    }catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }else if(rbt2.isChecked()){
-
+                    intent.putExtra("extra1", value1);
+                    intent.putExtra("extra2", value2);
+                    intent.putExtra("extra3", value3);
+                    intent.putExtra("extra4", value4);
+                    intent.putExtra("extra5", value5);
                 }else {
                     Toast.makeText(getApplicationContext(), "plz select RadioButton", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                intent.putExtra("extra1", value1);
-                intent.putExtra("extra2", value2);
-                intent.putExtra("extra3", value3);
-                intent.putExtra("extra4", value4);
-                intent.putExtra("extra5", value5);
                 startActivity(intent);
             }
         });
@@ -123,8 +152,6 @@ public class MainActivity extends AppCompatActivity {
         txt.setText(sdf.format(myCalendar.getTime()));
     }
 
-<<<<<<< HEAD
-=======
     private boolean checkDate(String s){
         String[] split = s.split("/");
         int day = Integer.parseInt(split[0]);
@@ -146,6 +173,11 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
->>>>>>> b99367210aee0ab2645fca82f5cd1bf5ec8a9350
+
+    private boolean validEmail(CharSequence target) {
+        if (target == null)
+            return false;
+        return Patterns.EMAIL_ADDRESS.matcher(target).matches();
+    }
 
 }
