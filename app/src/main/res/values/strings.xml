@@ -12,9 +12,20 @@
     <string name="change_date">set</string>
 
     <string-array name="gender_array">
-        <item>Ms.</item>
         <item>Mr.</item>
         <item>Mrs.</item>
+        <item>Miss</item>
+        <item>Ms.</item>
+        <item>Dr.</item>
+        <item>Buddhist Monk</item>
+        <item>Rev.</item>
+        <item>M.L.</item>
+        <item>M.R.</item>
+        <item>M.C.</item>
+        <item>Emeritus Professor</item>
+        <item>Professor</item>
+        <item>Assistant Professor</item>
+        <item>Associate Professor</item>
     </string-array>
 
     <string name="rbt1">File</string>
