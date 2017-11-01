@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.Date;
+
 
 public class MainActivity extends AppCompatActivity {
     Calendar myCalendar = Calendar.getInstance();
@@ -46,12 +48,16 @@ public class MainActivity extends AppCompatActivity {
                 String value1 = spnText+" "+name;
                 String value2 = edt2.getText().toString();
                 if (value2.matches("")) {
-                    Toast.makeText(getApplicationContext(), "plz enter your lasttname", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "plz enter your lastname", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String value3 = edt3.getText().toString();
                 if (value3.matches("")) {
                     Toast.makeText(getApplicationContext(), "plz enter your date of Birth", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!checkDate(value3)){
+                    Toast.makeText(getApplicationContext(), "your can't born in the future!!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String value4 = edt4.getText().toString();
@@ -101,6 +107,28 @@ public class MainActivity extends AppCompatActivity {
         EditText txt =(EditText) findViewById(R.id.editText3);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         txt.setText(sdf.format(myCalendar.getTime()));
+    }
+
+    private boolean checkDate(String s){
+        String[] split = s.split("/");
+        int day = Integer.parseInt(split[0]);
+        int month = Integer.parseInt(split[1]);
+        int year = Integer.parseInt(split[2]);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        String nowDate = sdf.format(date);
+        String[] nowSplit = nowDate.split("/");
+        int nowday = Integer.parseInt(nowSplit[0]);
+        int nowmonth = Integer.parseInt(nowSplit[1]);
+        int nowyear = Integer.parseInt(nowSplit[2]);
+        int checkyear = nowyear-year;
+        if(checkyear<=0){
+            int checkmonth = nowmonth-month;
+            if(checkmonth<0)return false;
+            int checkday = nowday-day;
+            if(checkmonth==0&&checkday<=0)return false;
+        }
+        return true;
     }
 
 }
